@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GIMPA × MTN | 10GB Free Data for Students</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="landing-body">
+
+    <!-- Top bar mimicking an official-looking nav -->
+    <nav class="top-bar">
+        <div class="top-bar-inner">
+            <div class="logo-group">
+                <img src="{{ url_for('static', filename='img/gimpa-logo.jpg') }}" alt="GIMPA" class="nav-logo" onerror="this.style.display='none'">
+                <span class="nav-divider">×</span>
+                <img src="{{ url_for('static', filename='img/mtn-logo.jpg') }}" alt="MTN" class="nav-logo" onerror="this.style.display='none'">
+            </div>
+            <span class="nav-title">Student Portal</span>
+        </div>
+    </nav>
+
+    <!-- Hero photo banner -->
+    <section class="hero-photo-section">
+        <img src="{{ url_for('static', filename='img/hero-photo.jpg') }}" alt="GIMPA Students" class="hero-photo">
+    </section>
+
+    <!-- Hero section -->
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="promo-badge">LIMITED TIME OFFER</div>
+            <h1>GIMPA × MTN<br><span class="highlight">10GB Free Data</span> Offer</h1>
+            <p class="hero-sub">
+                In collaboration with MTN Ghana, the Ghana Institute of Management
+                and Public Administration (GIMPA) is offering <strong>10GB of free data</strong>
+                to all current students. Register now to claim your bundle.
+            </p>
+            <p class="hero-small">Offer valid for a limited time. For GIMPA students only.</p>
+
+            <!-- Urgency elements -->
+            <div class="urgency-row">
+                <div class="countdown-box">
+                    <span class="countdown-label">Offer ends in</span>
+                    <span id="countdown" class="countdown-timer">02:59:59</span>
+                </div>
+                <div class="remaining-box">
+                    <span id="bundles-remaining" class="bundles-count">12</span>
+                    <span class="bundles-label">bundles remaining</span>
+                </div>
+            </div>
+
+            <!-- CTA button -->
+            <a href="{{ url_for('log_click', src=source) }}" class="cta-btn" id="cta-btn">
+                Register Now to Claim Your 10GB
+            </a>
+
+            <p class="trust-line">
+                ✓ Official GIMPA &amp; MTN partnership &nbsp;·&nbsp;
+                ✓ No hidden charges &nbsp;·&nbsp;
+                ✓ Instant activation
+            </p>
+        </div>
+    </section>
+
+    <!-- Info cards section -->
+    <section class="info-cards">
+        <div class="card">
+            <div class="card-icon">📱</div>
+            <h3>10GB Data Bundle</h3>
+            <p>Get a full 10GB data bundle credited directly to your MTN number within 24 hours of registration.</p>
+        </div>
+        <div class="card">
+            <div class="card-icon">🎓</div>
+            <h3>GIMPA Students Only</h3>
+            <p>This exclusive offer is available only to currently enrolled GIMPA students with a valid school ID.</p>
+        </div>
+        <div class="card">
+            <div class="card-icon">⚡</div>
+            <h3>Quick &amp; Easy</h3>
+            <p>Registration takes less than 2 minutes. Just fill in your details and your bundle is on its way.</p>
+        </div>
+    </section>
+
+    <footer class="landing-footer">
+        <p>&copy; 2026 GIMPA × MTN Student Data Initiative. All rights reserved.</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

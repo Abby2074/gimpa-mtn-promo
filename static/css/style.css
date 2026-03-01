@@ -1,0 +1,333 @@
+/* ===== Reset & Base ===== */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body.landing-body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+        'Helvetica Neue', Arial, sans-serif;
+    color: #1a1a2e;
+    background: #f5f6fa;
+    line-height: 1.6;
+}
+
+/* ===== Top Navigation Bar ===== */
+.top-bar {
+    background: #fff;
+    border-bottom: 3px solid #ffcb05;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.top-bar-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav-logo {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
+    border-radius: 4px;
+}
+
+.nav-divider {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #ffcb05;
+}
+
+.nav-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #555;
+    letter-spacing: 0.5px;
+}
+
+/* ===== Hero Photo Banner ===== */
+.hero-photo-section {
+    width: 100%;
+    max-height: 320px;
+    overflow: hidden;
+    background: #1a1a2e;
+}
+
+.hero-photo {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    display: block;
+    opacity: 0.9;
+}
+
+/* ===== Hero Section ===== */
+.hero {
+    position: relative;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    padding: 60px 20px 70px;
+    text-align: center;
+    color: #fff;
+    overflow: hidden;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(255, 203, 5, 0.1) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.promo-badge {
+    display: inline-block;
+    background: #ffcb05;
+    color: #1a1a2e;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    padding: 6px 18px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.hero h1 {
+    font-size: 2.4rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 18px;
+}
+
+.hero .highlight {
+    color: #ffcb05;
+}
+
+.hero-sub {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.88);
+    margin-bottom: 10px;
+}
+
+.hero-small {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.55);
+    margin-bottom: 30px;
+}
+
+/* ===== Urgency Row ===== */
+.urgency-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.countdown-box,
+.remaining-box {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    padding: 14px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    min-width: 160px;
+}
+
+.countdown-label,
+.bundles-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.countdown-timer {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #ff6b6b;
+    font-variant-numeric: tabular-nums;
+}
+
+.bundles-count {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #ffcb05;
+}
+
+/* ===== CTA Button ===== */
+.cta-btn {
+    display: inline-block;
+    background: #ffcb05;
+    color: #1a1a2e;
+    font-size: 1.1rem;
+    font-weight: 700;
+    padding: 16px 40px;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 20px rgba(255, 203, 5, 0.35);
+    margin-bottom: 20px;
+}
+
+.cta-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 28px rgba(255, 203, 5, 0.5);
+}
+
+.cta-btn:active {
+    transform: translateY(0);
+}
+
+.trust-line {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* ===== Info Cards Section ===== */
+.info-cards {
+    max-width: 1100px;
+    margin: -40px auto 0;
+    padding: 0 20px 60px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    position: relative;
+    z-index: 2;
+}
+
+.card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 36px 28px;
+    text-align: center;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.07);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+}
+
+.card-icon {
+    font-size: 2.4rem;
+    margin-bottom: 16px;
+}
+
+.card h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #1a1a2e;
+}
+
+.card p {
+    font-size: 0.92rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* ===== Footer ===== */
+.landing-footer {
+    background: #1a1a2e;
+    color: rgba(255, 255, 255, 0.5);
+    text-align: center;
+    padding: 24px 20px;
+    font-size: 0.82rem;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+
+    .hero-sub {
+        font-size: 0.95rem;
+    }
+
+    .info-cards {
+        grid-template-columns: 1fr;
+        margin-top: -20px;
+        padding-bottom: 40px;
+    }
+
+    .urgency-row {
+        gap: 14px;
+    }
+
+    .countdown-box,
+    .remaining-box {
+        min-width: 140px;
+        padding: 12px 18px;
+    }
+
+    .cta-btn {
+        font-size: 1rem;
+        padding: 14px 32px;
+    }
+
+    .hero-photo {
+        height: 200px;
+    }
+
+    .nav-logo {
+        height: 32px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        padding: 40px 16px 50px;
+    }
+
+    .hero h1 {
+        font-size: 1.5rem;
+    }
+
+    .info-cards {
+        padding: 0 16px 30px;
+        gap: 16px;
+    }
+
+    .card {
+        padding: 28px 20px;
+    }
+
+    .top-bar-inner {
+        padding: 10px 14px;
+    }
+
+    .nav-title {
+        font-size: 0.82rem;
+    }
+}
