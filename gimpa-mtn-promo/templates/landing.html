@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GIMPA × MTN | Akwaaba 10GB Data Giveaway</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="landing-body">
+
+    <!-- Top bar mimicking an official-looking nav -->
+    <nav class="top-bar">
+        <div class="top-bar-inner">
+            <div class="logo-group">
+                <img src="{{ url_for('static', filename='img/gimpa-logo.jpg') }}" alt="GIMPA" class="nav-logo" onerror="this.style.display='none'">
+                <span class="nav-divider">×</span>
+                <img src="{{ url_for('static', filename='img/mtn-logo.jpg') }}" alt="MTN" class="nav-logo" onerror="this.style.display='none'">
+            </div>
+            <span class="nav-title">Student Portal</span>
+        </div>
+    </nav>
+
+    <!-- Poster banner -->
+    <section class="hero-photo-section">
+        <img src="{{ url_for('static', filename='img/akwaaba-poster.jpg') }}" alt="Akwaaba Experience '26 Poster" class="hero-photo">
+    </section>
+
+    <!-- Hero section -->
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="promo-badge">AKWAABA EXPERIENCE '26</div>
+            <h1>Akwaaba 10GB Data Giveaway — <span class="highlight">Free for Students!</span></h1>
+            <p class="hero-sub">In partnership with MTN, the SRC is offering a free 5GB data bundle to students attending Akwaaba Experience '26. Register now to claim your reward.</p>
+
+            <!-- Urgency elements -->
+            <div class="urgency-row">
+                <div class="countdown-box">
+                    <span class="countdown-label">Offer ends in</span>
+                    <span id="countdown" class="countdown-timer">02:59:59</span>
+                </div>
+                <div class="remaining-box">
+                    <span id="bundles-remaining" class="bundles-count">12</span>
+                    <span class="bundles-label">bundles remaining</span>
+                </div>
+            </div>
+
+            <!-- CTA button — goes to /click which logs & redirects -->
+            <a href="{{ url_for('log_click', src=source|default('')) }}" class="cta-btn" id="cta-btn">
+                 Register Now — Claim Your Data!
+             </a>
+
+            <p class="trust-line">✓ Official SRC Initiative · ✓ Free · ✓ Instant</p>
+        </div>
+    </section>
+
+    <!-- Info cards section -->
+    <section class="info-cards">
+        <div class="card">
+            <div class="card-icon">👻</div>
+            <h3>Bundles Vanish Fast</h3>
+            <p>They disappear like ghosts — act now or miss out.</p>
+        </div>
+        <div class="card">
+            <div class="card-icon">🎓</div>
+            <h3>GIMPA Students Only</h3>
+            <p>Valid student ID required. Quick claim: ~2 clicks.</p>
+        </div>
+    </section>
+
+    <footer class="landing-footer">
+        <p>&copy; 2026 GIMPA × MTN Akwaaba Experience '26. All rights reserved.</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

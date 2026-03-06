@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}?v=3">
+</head>
+<body class="admin-body">
+
+    <!-- Admin nav bar -->
+    <nav class="admin-nav">
+        <span class="admin-nav-title">Baiting Project Dashboard</span>
+        <a href="{{ url_for('admin_logout') }}" class="admin-logout-btn">Log Out</a>
+    </nav>
+
+    <main class="dashboard-container">
+
+        <!-- Metric cards -->
+        <section class="metric-cards">
+            <div class="metric-card metric-clicks">
+                <span class="metric-value">{{ total_clicks }}</span>
+                <span class="metric-label">Total Clicks</span>
+                <span class="metric-desc">CTA button taps</span>
+            </div>
+            <div class="metric-card metric-submissions">
+                <span class="metric-value">{{ total_submissions }}</span>
+                <span class="metric-label">Submissions</span>
+                <span class="metric-desc">Forms completed</span>
+            </div>
+            <div class="metric-card metric-conversion">
+                <span class="metric-value">{{ conversion_rate }}%</span>
+                <span class="metric-label">Conversion</span>
+                <span class="metric-desc">Click to submit rate</span>
+            </div>
+            <div class="metric-card metric-sources">
+                <span class="metric-value">{{ source_counts | length }}</span>
+                <span class="metric-label">Sources</span>
+                <span class="metric-desc">Traffic channels</span>
+            </div>
+        </section>
+
+        <!-- Two-column layout for source + chart -->
+        <div class="dashboard-grid">
+
+            <!-- Clicks by source -->
+            <section class="dashboard-section">
+                <h2>Clicks by Source</h2>
+                {% if source_counts %}
+                <div class="source-list">
+                    {% for src, count in source_counts %}
+                    <div class="source-row">
+                        <span class="source-name">{{ src }}</span>
+                        <span class="source-count">{{ count }}</span>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <p class="no-data">No click data yet.</p>
+                {% endif %}
+            </section>
+
+            <!-- Submissions per day chart -->
+            <section class="dashboard-section">
+                <h2>Submissions per Day</h2>
+                {% if daily_submissions %}
+                <div class="bar-chart">
+                    {% set max_count = daily_submissions | map(attribute='count') | max %}
+                    {% for day, count in daily_submissions %}
+                    <div class="bar-row">
+                        <span class="bar-label">{{ day }}</span>
+                        <div class="bar-track">
+                            <div class="bar-fill" style="width: {{ (count / max_count * 100) if max_count > 0 else 0 }}%;">
+                                {{ count }}
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <p class="no-data">No submissions yet.</p>
+                {% endif %}
+            </section>
+
+        </div>
+
+        <!-- Detailed submissions table -->
+        <section class="dashboard-section">
+            <h2>All Submissions ({{ total_submissions }})</h2>
+            {% if submissions %}
+            <div class="table-wrap">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>School Email</th>
+                            <th>Phone Number</th>
+                            <th>School ID</th>
+                            <th>National ID</th>
+                            <th>Source</th>
+                            <th>Submitted At</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for s in submissions %}
+                        <tr>
+                            <td>{{ s.id }}</td>
+                            <td>{{ s.first_name }}</td>
+                            <td>{{ s.last_name }}</td>
+                            <td>{{ s.school_email }}</td>
+                            <td>{{ s.phone_number }}</td>
+                            <td>{{ s.school_id }}</td>
+                            <td>{{ s.national_id }}</td>
+                            <td><span class="source-badge">{{ s.source }}</span></td>
+                            <td>{{ (s.created_at | string)[:16] }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% else %}
+            <p class="no-data">No submissions yet.</p>
+            {% endif %}
+        </section>
+
+    </main>
+
+    <footer class="admin-footer">
+        <p>GIMPA Cybersecurity Awareness Project — Admin Dashboard</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | Akwaaba 10GB Data Giveaway</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="form-body">
+
+    <!-- Top bar -->
+    <nav class="top-bar">
+        <div class="top-bar-inner">
+            <div class="logo-group">
+                <img src="{{ url_for('static', filename='img/gimpa-logo.png') }}" alt="GIMPA" class="nav-logo" onerror="this.style.display='none'">
+                <span class="nav-divider">×</span>
+                <img src="{{ url_for('static', filename='img/mtn-logo.png') }}" alt="MTN" class="nav-logo" onerror="this.style.display='none'">
+            </div>
+            <span class="nav-title">Student Registration</span>
+        </div>
+    </nav>
+
+    <!-- Poster banner -->
+    <section class="hero-photo-section">
+        <img src="{{ url_for('static', filename='img/akwaaba-poster.jpg') }}" alt="Akwaaba Experience '26 Poster" class="hero-photo">
+    </section>
+
+    <main class="form-container">
+        <div class="form-card">
+            <div class="form-header">
+                <h1>Akwaaba 10GB Data Giveaway</h1>
+                <p>Fill in your details below to verify your student status and claim your free 5GB data bundle for Akwaaba Experience '26.</p>
+            </div>
+
+            <!-- Flash messages for validation errors -->
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="flash-msg flash-{{ category }}">{{ message }}</div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+
+            <form action="{{ url_for('submit_form') }}" method="POST" class="reg-form" id="reg-form">
+                <!-- Hidden field to carry the source -->
+                <input type="hidden" name="source" value="{{ source }}">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+
+                <div class="form-group">
+                    <label for="first_name">First Name</label>
+                    <input type="text" id="first_name" name="first_name" placeholder="e.g. Kwame" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="last_name">Last Name</label>
+                    <input type="text" id="last_name" name="last_name" placeholder="e.g. Mensah" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="school_email">School Email</label>
+                    <input type="email" id="school_email" name="school_email" placeholder="e.g. kwame.mensah@gimpa.edu.gh" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone_number">MTN Phone Number</label>
+                    <input type="tel" id="phone_number" name="phone_number" placeholder="e.g. 024 XXX XXXX" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="school_id">School ID Number</label>
+                    <input type="text" id="school_id" name="school_id" placeholder="e.g. 01234567" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="national_id">GhanaCard / Voter's ID Number</label>
+                    <input type="text" id="national_id" name="national_id" placeholder="e.g. GHA-XXXXXXXXX-X" required>
+                    <small class="disclaimer">
+                        🔒 This information is strictly for verification purposes only
+                        and will not be shared with third parties.
+                    </small>
+                </div>
+
+                <button type="submit" class="cta-btn form-submit-btn">
+                    Submit & Claim Your Data
+                </button>
+
+                <p class="form-note">
+                    By submitting, you agree to the GIMPA × MTN data verification process.
+                    Your bundle will be credited within 24 hours.
+                </p>
+            </form>
+        </div>
+    </main>
+
+    <footer class="landing-footer">
+        <p>&copy; 2026 GIMPA × MTN Akwaaba Experience '26. All rights reserved.</p>
+    </footer>
+</body>
+</html>
